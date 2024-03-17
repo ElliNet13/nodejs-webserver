@@ -5,18 +5,22 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+function br(input) {
+    return input.replace(/\n/g, "<br>");
+}
+
 function executeScript(scriptPath) {
   return new Promise((resolve, reject) => {
     exec(`node ${scriptPath}`, (error, stdout, stderr) => {
       if (error) {
-        reject(`Error: ${error.message}`);
+        reject(`Error: ${br(error.message)}`);
         return;
       }
       if (stderr) {
-        reject(`stderr: ${stderr}`);
+        reject(`stderr: ${bf(stderr)}`);
         return;
       }
-      resolve(stdout);
+      resolve(br(stdout));
     });
   });
 }
