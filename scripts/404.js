@@ -1,4 +1,4 @@
-function html(value) {
-console.log(value)
+function display(value) {
+   console.log(value + "<br>")
 }
-html("Oh no! The script was not found!")
+display("Oh no! The script was not found!")
